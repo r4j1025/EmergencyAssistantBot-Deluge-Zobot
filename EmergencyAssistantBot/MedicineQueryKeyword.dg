@@ -1,0 +1,27 @@
+//getting user query
+query = session.get("med").get("value");
+
+//invoking the API to get medicine details
+API_URL = "https://risetogether-production.up.railway.app/api/medicine/search?keyword=" + query;
+APIres = getUrl(API_URL);
+info APIres;
+
+medlist = APIres.getJson("med");
+
+//inserting the data into data collection
+data = Collection();
+for each  i in medlist
+{
+	s = "*" + "• " + i.get("name") + "*" + "\n";
+	data.insert(s);
+	r = "dosage : " + i.get("dosage") + "\n";
+	data.insert(r);
+	t = "usecases : " + i.get("useCases") + "\n\n";
+	data.insert(t);
+}
+info data;
+
+//mapping the response
+res = Map();
+res.put("medlist",data);
+return res;

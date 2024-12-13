@@ -1,0 +1,27 @@
+if(session.containsKey("location"))
+{
+	lng = session.get("location").get("value").get("longitude");
+	lat = session.get("location").get("value").get("latitude");
+}
+
+//Using geoapify API to get nearby hospitals' details of user's location.
+API_URL = "https://api.geoapify.com/v2/places?categories=healthcare.hospital&filter=circle:" + lng + "," + lat + ",30042&bias=proximity:" + lng + "," + lat + "&limit=8&apiKey=API_TOKEN";
+APIres = getUrl(API_URL);
+
+hospital_list = APIres.getJson("features");
+data = Collection();
+
+//creating list of nearby hospitals
+for each  i in hospital_list
+{
+	s = "• " + i.getJson("properties").get("name") + "\n";
+	data.insert(s);
+	r = i.getJson("properties").get("address_line2") + "\n\n";
+	data.insert(r);
+}
+
+//mapping the response
+info data;
+res = Map();
+res.put("hname",data);
+return res;

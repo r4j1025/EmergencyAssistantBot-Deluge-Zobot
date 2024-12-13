@@ -1,0 +1,15 @@
+response = Map();
+email = "";
+OTP = 0;
+
+//generation 6-digit OTP
+if(session.containsKey("email"))
+{
+	email = session.get("email").get("text");
+	OTP = randomNumber(10000,99999);
+}
+info email;
+
+//mapping the response
+response.put("OTP",OTP);
+return response;

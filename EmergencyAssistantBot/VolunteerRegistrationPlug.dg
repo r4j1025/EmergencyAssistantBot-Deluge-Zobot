@@ -1,0 +1,35 @@
+//retrieving data from user inputs and storing those data in variables.
+lng = session.get("location").get("value").get("longitude");
+lat = session.get("location").get("value").get("latitude");
+uname = session.get("name").get("value");
+uemail = session.get("email").get("value");
+uphone = session.get("phone").get("value");
+
+//This website consist of MongoDB cloud database for storing registered volunteer's information 
+//and after registration the volunteer's name will be displayed on the map under "Volunteers" section on the home page.
+//API was created to be accessed without API_TOKEN for testing purpose
+API_URL = "https://risetogether-production.up.railway.app/api/data";
+headers = Map();
+headers.put("Content-Type","application/json");
+myMap = Map();
+myMap.put("description",uname);
+myMap.put("phone",uphone);
+myMap.put("email",uemail);
+myMap.put("lat",lat);
+myMap.put("lng",lng);
+info myMap;
+
+//storing registered volunteer's information in MongoDB using POST API call
+response1 = invokeurl
+[
+	url :"https://risetogether-production.up.railway.app/api/data"
+	type :POST
+	parameters:myMap.toText()
+	headers:headers
+];
+
+//mappint the response
+response = Map();
+response.put("response",response1);
+response.put("status","Registration successful! Welcome aboard as a volunteer!");
+return response;

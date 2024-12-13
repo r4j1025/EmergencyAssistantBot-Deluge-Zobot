@@ -1,0 +1,13 @@
+systemotp = session.get("sysOTP").get("value");
+visitorotp = session.get("userOTP").get("value");
+
+//comparing the user entered OTP with the OTP sent to user's email
+if(systemotp == visitorotp)
+{
+	otp_status = "✅ OTP verified successfully!";
+}
+
+//mapping the response
+response = Map();
+response.put("OTPstatus",otp_status);
+return response;

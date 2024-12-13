@@ -1,0 +1,35 @@
+if(session.containsKey("location"))
+{
+	loc = session.get("location").get("value").get("city");
+}
+
+cityName = lower(loc);
+
+//Using Openweathermap API to get current weather details of user's location.
+apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=API_TOKEN";
+weather = getUrl(apiUrl);
+info weather;
+
+//converting the current temperature value from kelvin to celsius.
+temp_kelvin = weather.get("main").get("temp");
+temp_celsius = temp_kelvin - 273.15;
+
+wind_speed = weather.get("wind").get("speed");
+wind_deg = weather.get("wind").get("deg");
+
+//storing the current weather status in status variable.
+status = weather.getJson("weather");
+Weather_List = Collection();
+for each  w in status
+{
+	Weather_List.insert(w.getJson("description"));
+}
+Weather_status = Weather_List.get(0);
+
+//mapping the response.
+response = Map();
+response.put("temperature",temp_celsius);
+response.put("windspeed",wind_speed);
+response.put("winddeg",wind_deg);
+response.put("status",Weather_status);
+return response;
