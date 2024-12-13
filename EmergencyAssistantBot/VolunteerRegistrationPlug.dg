@@ -22,7 +22,7 @@ info myMap;
 //storing registered volunteer's information in MongoDB using POST API call
 response1 = invokeurl
 [
-	url :"https://risetogether-production.up.railway.app/api/data"
+	url :"URL"
 	type :POST
 	parameters:myMap.toText()
 	headers:headers
