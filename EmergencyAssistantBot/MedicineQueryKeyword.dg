@@ -2,7 +2,7 @@
 query = session.get("med").get("value");
 
 //invoking the API to get medicine details
-API_URL = "https://risetogether-production.up.railway.app/api/medicine/search?keyword=" + query;
+API_URL = "URL?keyword=" + query;
 APIres = getUrl(API_URL);
 info APIres;
 
