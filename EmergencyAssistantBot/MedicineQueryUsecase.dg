@@ -2,7 +2,7 @@
 query = session.get("usecase").get("value");
 
 //invoking the API to get medicine details
-API_URL = "https://risetogether-production.up.railway.app/api/medicine/usecase?useCase=" + query;
+API_URL = "URL?useCase=" + query;
 APIres = getUrl(API_URL);
 info APIres;
 
