@@ -1,4 +1,6 @@
 # Zobot - Emergency Assistant Chatbot
+![Screenshot 2024-12-13 203036](https://github.com/user-attachments/assets/014cb013-f6fe-441c-8667-1107c9d66789)
+
 
 Zobot is an intelligent emergency assistant chatbot developed by Team Cybers for the CliqTrix contest. It is designed to assist users with emergency-related services, integrating real-time data and features for practical use in critical situations.
 
